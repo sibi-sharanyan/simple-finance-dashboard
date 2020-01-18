@@ -1,0 +1,70 @@
+[
+    {
+        "scrip" : "AADR" ,
+        "quantity" : 430,
+        "price" : 50.30,
+        "avg_cost" : 41.75 ,
+        "invested_amount" : 17952.07,
+        "portfolio_value_percent" : 22.06,
+        "unrealized_pl" : 3676.93,
+        "return_percent" : 20.48,
+        "type" : "mf"
+    },
+    {
+        "scrip" : "MFEM" ,
+        "quantity" : 210,
+        "price" : 23.20,
+        "avg_cost" : 22.50 ,
+        "invested_amount" : 4725.84,
+        "portfolio_value_percent" : 5.81,
+        "unrealized_pl" : 146.16,
+        "return_percent" : 3.09,
+        "type" : "mf"
+    },
+    {
+        "scrip" : "JPEM" ,
+        "quantity" : 328,
+        "price" : 52.50,
+        "avg_cost" : 56.70 ,
+        "invested_amount" : 18597.60,
+        "portfolio_value_percent" : 22.86,
+        "unrealized_pl" : 1377.60,
+        "return_percent" : -7.41,
+        "type" : "mf"
+    },
+    {
+        "scrip" : "KEMQ" ,
+        "quantity" : 801,
+        "price" : 20.40,
+        "avg_cost" : 22.24,
+        "invested_amount" : 17811.04,
+        "portfolio_value_percent" : 21.89,
+        "unrealized_pl" : 1470.64,
+        "return_percent" : -8.26,
+        "type" : "etf"
+
+    },
+    {
+        "scrip" : "KLDW" ,
+        "quantity" : 523,
+        "price" : 32.90,
+        "avg_cost" : 26.32,
+        "invested_amount" : 13765.36,
+        "portfolio_value_percent" : 16.92,
+        "unrealized_pl" : 3441.34,
+        "return_percent" : 25.00,
+        "type" : "etf"
+
+    },
+    {
+        "scrip" : "KOIN" ,
+        "quantity" : 335,
+        "price" : 25.40,
+        "avg_cost" : 25.40,
+        "invested_amount" : 8509.00,
+        "portfolio_value_percent" : 10.46,
+        "unrealized_pl" : -0,
+        "return_percent" : 0.00,
+        "type" : "etf"
+    }
+]
