@@ -11,19 +11,23 @@ export const showModal = (payload) => {
   };
 };
 
-export const toggleBuy = isBuy => { 
-  if (isBuy) {
+export const toggleBuy = obj => { 
+  if (obj.status === true) {
     return {
       type: "BUY",
       payload: {
-        titleColor: "bg-primary"
+        titleColor: "bg-primary",
+        quantity: 1
+        
       }
     };
   } else {
+    console.log('Works' , obj.quantity);
     return {
       type: "SELL" ,
       payload: {
-        titleColor: "bg-danger"
+        titleColor: "bg-danger",
+        quantity: obj.quantity
       }
     };
   }
@@ -33,7 +37,7 @@ export const changeCounter = (cnt) => {
   return {
     type: "CHANGE_COUNTER" , 
     payload: {
-      cnt
+      quantity: cnt
     }
   }
 }

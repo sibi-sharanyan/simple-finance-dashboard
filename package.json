@@ -15,6 +15,7 @@
     "react-bootstrap-counter": "^1.0.1",
     "react-bootstrap-switch": "^15.5.3",
     "react-chartjs-2": "^2.8.0",
+    "react-counter-input": "^0.2.1",
     "react-dom": "^16.12.0",
     "react-donut-chart": "^1.1.8",
     "react-progressbar": "^15.4.1",

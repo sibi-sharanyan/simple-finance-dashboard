@@ -3,16 +3,10 @@ import { Modal } from "react-bootstrap";
 import { connect } from "react-redux";
 import { hideModal, showModal, toggleBuy, changeCounter } from "../actions";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
-import CounterInput from "react-bootstrap-counter";
+import CounterInput from "react-counter-input";
 import Swal from "sweetalert2";
 
 class FormModal extends Component {
-  handleSwitch(elem, state) {
-    console.log("handleSwitch. elem:", elem);
-    console.log("name:", elem.props.name);
-    console.log("new state:", state);
-  }
-
   render() {
     console.log(this.props);
     return (
@@ -28,80 +22,83 @@ class FormModal extends Component {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div className="">
+            <div className="d-flex justify-content-center align-items-center flex-column">
               <div className="">
-                <p className="lead">
-                  Quantity:{" "}
-                  <div className="w-25">
-                    <CounterInput
-                      value={this.props.modalStatus.quantity}
-                      min={1}
-                      max={
-                       Infinity
-                      }
-                      onChange={value => {
-                        this.props.changeCounter(value);
-                      }}
-                    />
-                  </div>
-                </p>
+                <p className="blockquote">  Quantity:  </p>
+                <div className="w-75">
+                  <CounterInput
+                    className="w-75"
+                    count={this.props.modalSpecs.quantity}
+                    min={1}
+                    max={this.props.modalStatus.quantity}
+                    onCountChange={count => this.props.changeCounter(count)}
+                  />
+                </div>
               </div>
 
               <div className="">
-                <p className="lead">Price: ${this.props.modalStatus.price}</p>
+                <p className="blockquote">Price: ${this.props.modalStatus.price}</p>
               </div>
 
               <div className="">
-                <p className="lead">
+                <p className="blockquote">
                   Value: $
                   {Math.round(
-                    this.props.counter * this.props.modalStatus.price * 100
+                    this.props.modalSpecs.quantity *
+                      this.props.modalStatus.price *
+                      100
                   ) / 100}
                 </p>
               </div>
+
+         
+
             </div>
           </Modal.Body>
-          <div className="my-5 ml-2">
-            <BootstrapSwitchButton
-              size="xs"
+
+
+          <Modal.Footer>
+
+          <BootstrapSwitchButton
+              size="sm"
               checked={this.props.modalSpecs.status === "Buy" ? true : false}
               onlabel="Buy"
               offlabel="Sell"
               onChange={checked => {
-                this.props.toggleBuy(checked);
+                this.props.toggleBuy({
+                  status: checked,
+                  quantity: this.props.modalStatus.quantity
+                });
               }}
             />
-          </div>
 
-          <Modal.Footer>
             <button
               className="btn btn-success"
               onClick={() => {
-                
-                if(this.props.modalStatus.quantity < this.props.counter && this.props.modalSpecs.status  === 'Sell'){
+                if (
+                  this.props.modalStatus.quantity < this.props.counter &&
+                  this.props.modalSpecs.status === "Sell"
+                ) {
                   Swal.fire({
                     icon: "error",
                     title: `Invalid Entry`,
-                    text: `You can't sell more than what you are currently Holding`,
-                   
+                    text: `You can't sell more than what you are currently Holding`
                   });
-
-                }else {
+                } else {
                   Swal.fire({
                     icon: "question",
                     title: `Are you sure?`,
                     text: `You are about to ${this.props.modalSpecs.status} ${
                       this.props.modalStatus.scrip
                     } of value $${Math.round(
-                      this.props.counter * this.props.modalStatus.price * 100
+                      this.props.modalSpecs.quantity *
+                        this.props.modalStatus.price *
+                        100
                     ) / 100} `,
                     showCloseButton: true,
                     showCancelButton: true
                   });
-
                 }
-
-  
               }}
             >
               Place Order
@@ -116,8 +113,7 @@ class FormModal extends Component {
 const mapStateToProps = state => {
   return {
     modalStatus: state.modalStatus,
-    modalSpecs: state.modalSpecs,
-    counter: state.counter
+    modalSpecs: state.modalSpecs
   };
 };
 
